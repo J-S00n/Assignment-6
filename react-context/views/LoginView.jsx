@@ -1,12 +1,18 @@
 import { useNavigate, Link } from "react-router-dom";
+import { useStoreContext } from "../context/user";
 import "./LoginView.css"
 
 function LoginView() {
 
     const navigate = useNavigate();
+    const { email, password } = useStoreContext();
 
     const handleLogin = (e) => {
         e.preventDefault();
+        if (!formData.email == email || !formData.password == password) {
+            alert("Email or Password incorrect!");
+            return;
+        }
         navigate("/movies/genre/28");
     };
 
@@ -16,12 +22,14 @@ function LoginView() {
             <form onSubmit={handleLogin} className="login-form">
                 <input
                     type="email"
+                    value={formData.email}
                     placeholder="Email"
                     required
                     className="login-input"
                 />
                 <input
                     type="password"
+                    value={formData.password}
                     placeholder="Password"
                     required
                     className="login-input"

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeView from '../views/HomeView.jsx';
-import LoginView from '../Views/LoginView.jsx';
+import LoginView from '../views/LoginView.jsx';
 import RegisterView from '../Views/RegisterView.jsx';
 import ErrorView from '../views/ErrorView.jsx';
 import MoviesView from '../views/MoviesView.jsx';
