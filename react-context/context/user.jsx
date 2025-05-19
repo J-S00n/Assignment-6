@@ -1,22 +1,23 @@
 import { createContext, useContext, useState } from "react";
 import { Map } from "immutable";
 
-const UserContext = createContext();
+const StoreContext = createContext();
 
-export const UserProvider = ({ children }) => {
+export const StoreProvider = ({ children }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [choices, setChoices] = useState(Map({}));
     const [cart, setCart] = useState(Map({}));
 
     return (
-        <UserContext.Provider value={{ email, setEmail, firstName, setFirstName, lastName, setLastName, password, setPassword, cart, setCart }}>
+        <StoreContext.Provider value={{ email, setEmail, firstName, setFirstName, lastName, setLastName, password, setPassword, cart, setCart, choices, setChoices }}>
             {children}
-        </UserContext.Provider>
+        </StoreContext.Provider>
     );
 };
 
 export const useStoreContext = () => {
-    return useContext(UserContext);
+    return useContext(StoreContext);
 }

@@ -1,11 +1,16 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useStoreContext } from "../context/user";
+import { useState } from "react";
 import "./LoginView.css"
 
 function LoginView() {
 
     const navigate = useNavigate();
     const { email, password } = useStoreContext();
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+    });
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -24,15 +29,15 @@ function LoginView() {
                     type="email"
                     value={formData.email}
                     placeholder="Email"
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className="login-input"
                 />
                 <input
                     type="password"
                     value={formData.password}
                     placeholder="Password"
+                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     required
-                    className="login-input"
                 />
                 <button type="submit" className="login-button">
                     Login

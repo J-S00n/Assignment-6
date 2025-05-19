@@ -1,13 +1,20 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useStoreContext } from "../context/user";
 import { useState } from "react";
+import { Map } from "immutable";
 import "./RegisterView.css";
 
 function RegisterView() {
 
     const navigate = useNavigate();
     const { setEmail, setFirstName, setLastName, setPassword } = useStoreContext();
-    const [passwordCheck, setPasswordCheck] = useState(false);
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+    });
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -30,24 +37,28 @@ function RegisterView() {
                     type="text"
                     placeholder="First Name"
                     value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     required
                 />
                 <input
                     type="text"
                     placeholder="Last Name"
                     value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     required
                 />
                 <input
                     type="email"
                     placeholder="Email"
                     value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={formData.password}
+                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     required
                 />
                 <input
@@ -55,6 +66,9 @@ function RegisterView() {
                     className="confirmPassword"
                     placeholder="Re-enter Password"
                     value={formData.confirmPassword}
+                    onChange={(e) => {
+                        setFormData({ ...formData, confirmPassword: e.target.value });
+                    }}
                     required />
                 <button type="submit">Register</button>
                 <p className="login-link">
