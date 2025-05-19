@@ -1,39 +1,98 @@
 import { useStoreContext } from "../context/user";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { Map } from "immutable";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "./SettingsView.css";
 
 function SettingsView() {
-    const { email, firstName, lastName, choices, setChoices, setFirstName, setLastName } = useStoreContext();
+    const { email, firstName, setFirstName, lastName, setLastName, choices, setChoices, genres } = useStoreContext();
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        selectedGenres: [],
+    });
+
+    const checkboxesRef = useRef({});
+    const navigate = useNavigate();
+
+    function handleSettingChange(e) {
+        e.preventDefault();
+
+        const selectedGenres = Object.keys(checkboxesRef.current)
+            .filter((genreId) => checkboxesRef.current[genreId].checked)
+            .map(Number);
+
+        if (selectedGenres.length < 5) {
+            alert("Please select at least 5 genres.");
+            return;
+        }
+
+        const sortedGenres = selectedGenres
+            .map((genreId) => genres.find((genre) => genre.id === genreId))
+            .filter((genre) => genre) //remove undefined genres
+            .sort((a, b) => a.genre.localeCompare(b.genre));
+
+        alert("Successfully updated!");
+        setFirstName(formData.firstName);
+        setLastName(formData.lastName);
+        setChoices(sortedGenres);
+        navigate("/movies");
+    }
 
     return (
         <div className="settings-container">
-            <h1>Settings</h1>
-            <div className="first-name-display">
-                <h2>First Name</h2>
-                <p>{firstName}</p>
-                <h2 >Change First Name</h2>
+            <Header />
+            <h1 className="settings-title">Settings</h1>
+            <form onSubmit={handleSettingChange} className="settings-form">
+                <label>
+                    First Name:
+                </label>
                 <input
                     type="text"
-                    value={setFirstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    placeholder="Enter new first name"
+                    placeholder={firstName}
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    required
                 />
-            </div>
-            <div className="last-name-display">
-                <h2>Last Name</h2>
-                <p>{lastName}</p>
-                <h2>Change Last Name</h2>
+                <label>
+                    Last Name:
+                </label>
                 <input
                     type="text"
-                    value={setLastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Enter new last name"
+                    placeholder={lastName}
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    required
                 />
-            </div>
-            <div className="email-display">
-                <h2>Email</h2>
-                <p>{email}</p>
-            </div>
+                <label>
+                    Email:
+                </label>
+                <input
+                    type="email"
+                    placeholder={email}
+                    readOnly
+                />
+                <div className="genre-selection">
+                    <h2>Please select at least 5 genres</h2>
+                    {genres?.map((item) => (
+                        <div key={item.id}>
+                            <input
+                                type="checkbox"
+                                ref={(el) => { checkboxesRef.current[item.id] = el; }}
+                                style={{ cursor: "pointer" }}
+                            />
+                            <label className="genre-name">{item.genre}</label>
+                        </div>
+                    ))}
+                </div>
+                <button type="submit">Save</button>
+            </form>
+            <Footer />
         </div>
     );
 }
 export default SettingsView;
+
+

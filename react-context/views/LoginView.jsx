@@ -6,7 +6,7 @@ import "./LoginView.css"
 function LoginView() {
 
     const navigate = useNavigate();
-    const { email, password } = useStoreContext();
+    const { email, password, setLoggedIn } = useStoreContext();
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -18,6 +18,7 @@ function LoginView() {
             alert("Email or Password incorrect!");
             return;
         }
+        setLoggedIn(true);
         navigate("/movies/genre/28");
     };
 

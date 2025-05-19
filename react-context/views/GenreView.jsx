@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useStoreContext } from "../context/user";
 import "./GenreView.css";
 
 function GenreView() {
@@ -9,6 +10,7 @@ function GenreView() {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
+    const {cart, setCart} = useStoreContext();
     const moviesPerPage = 20; // Number of movies per page
 
     useEffect(() => {
@@ -37,10 +39,19 @@ function GenreView() {
             <div className="movie-list">
                 {movies.length > 0 ? (
                     movies.map((movie) => (
-                        <img className="movie-image" key={movie.id} height={"300px"} style={{ cursor: "pointer" }}
-                            onClick={() => navigate(`/movies/details/${movie.id}`)}
-                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title} />
+                        <div key={movie.id} className="movie-container">
+                            <img className="movie-image" height={"300px"} style={{ cursor: "pointer" }}
+                                onClick={() => navigate(`/movies/details/${movie.id}`)}
+                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                alt={movie.title} 
+                            />
+                            <button className="buy-button" onClick={() => {
+                                setCart((prev) => prev.set(movie.id, movie));
+                                alert(movie.title +" has been added to your cart!");
+                            }}>
+                                {cart.has(movie.id) ? "Added" : "Buy"}
+                            </button>
+                        </div>
                     ))
                 ) : (
                     <p>Loading content</p>

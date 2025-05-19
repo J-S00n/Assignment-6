@@ -1,38 +1,22 @@
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { useStoreContext } from "../context/user.jsx";
 import "./MoviesView.css";
 import Genres from "../components/Genres.jsx";
+import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Feature from "../components/Feature.jsx";
 
-function MoviesView() {
-    const navigate = useNavigate();
-    const location = useLocation();
 
-    const genres = [
-        { genre: "Action", id: 28 },
-        { genre: "Adventure", id: 12 },
-        { genre: "Animation", id: 16 },
-        { genre: "Comedy", id: 35 },
-        { genre: "Crime", id: 80 },
-        { genre: "Family", id: 10751 },
-        { genre: "Fantasy", id: 14 },
-        { genre: "History", id: 36 },
-        { genre: "Mystery", id: 9648 },
-        { genre: "Science Fiction", id: 878 },
-        { genre: "Thriller", id: 53 },
-        { genre: "War", id: 10752 },
-        { gemre: "Westerm", id: 37 },
-    ];
+function MoviesView() {
+    const location = useLocation();
+    const { choices } = useStoreContext();
 
     return (
         <div className="movies-container">
-            <div className="header">
-                <h1>VibeVision</h1>
-                <button onClick={() => navigate('/')} className="logout">Logout</button>
-            </div>
+            <Header />
             <div className="genres-and-movies">
                 <div className="genres">
-                    <Genres genresList={genres} />
+                    <Genres genresList={choices} />
                 </div>
                 <div className="movie-list">
                     {(location.pathname === "/movies" || location.pathname === "/movies/") && <Feature />}

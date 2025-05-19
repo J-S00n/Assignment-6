@@ -1,14 +1,36 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { useStoreContext } from '../context/user';
 
-function Header({ children }) {
+function Header() {
     const navigate = useNavigate();
+    const { setLoggedIn, loggedIn, firstName } = useStoreContext();
+
+    function logout() {
+        setLoggedIn(false);
+        navigate("/");
+    }
 
     return (
         <div className="header">
             <h1>VibeVision</h1>
-            <button onClick={() => navigate('/login')} className="login">Login</button>
-            <button onClick={() => navigate('/register')} className="register">Register</button>
-            {children}
+            {loggedIn ? (
+                <>
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        className="search-bar"
+                    />
+                    <p className="welcome-msg">Welcome {firstName}!</p>
+                    <Link to={'/cart'} className="cart-button">Cart</Link>
+                    <Link to={'/settings'} className="settings">Settings</Link>
+                    <button onClick={logout} className="logout">Logout</button>
+                </>
+            ) : (
+                <>
+                    <button onClick={() => navigate('/login')} className="login">Login</button>
+                    <button onClick={() => navigate('/register')} className="register">Register</button>
+                </>
+            )}
         </div>
     );
 }

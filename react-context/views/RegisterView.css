@@ -73,3 +73,33 @@
 .login-link a:hover {
     color: #0056b3;
 }
+
+.genre-selection {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.genre-selection h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.genre-selection div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.genre-selection input[type="checkbox"] {
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.genre-selection .genre-name {
+    font-size: 1rem;
+    color: #555;
+}
