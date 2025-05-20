@@ -20,6 +20,98 @@
     border-color: #1e7e34;
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f1faee;
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px; /* Made the search bar longer */
+    justify-content: center;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    flex: 1;
+    padding: 5px;
+    border-radius: 20px;
+    color: black; /* Changed text color to black */
+}
+
+.search-bar button {
+    background-color: #457b9d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #1d3557;
+}
+
+.welcome-message {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #f1faee;
+    margin: 40px 0; /* Increased space between welcome message and other buttons */
+    text-align: center;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    background-color: #457b9d;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+}
+
+.cart:hover {
+    background-color: #1d3557;
+    transform: scale(1.05);
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    background-color: #a8dadc;
+    color: #1d3557;
+    padding: 6px 10px; /* Made the settings button smaller */
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem; /* Reduced font size */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+}
+
+.settings:hover {
+    background-color: #457b9d;
+    color: white;
+    transform: scale(1.05);
+}
+
+.logout {
+    margin: 0 10px;
+}
+
 .logout {
     display: inline-flex;
     justify-content: center;

@@ -19,6 +19,11 @@ function Header() {
                         type="text"
                         placeholder="Search..."
                         className="search-bar"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                navigate(`/movies/search/${e.target.value}`);
+                            }
+                        }}
                     />
                     <p className="welcome-msg">Welcome {firstName}!</p>
                     <Link to={'/cart'} className="cart-button">Cart</Link>

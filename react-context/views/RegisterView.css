@@ -1,105 +1,99 @@
+/* RegisterView.css */
+
 .register-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #f5f5f5;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
     font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
 .register-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .register-form {
-    display: flex;
-    flex-direction: column;
+    background: #ffffff;
+    color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .register-form input {
-    margin-bottom: 1rem;
-    padding: 0.75rem;
+    padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     outline: none;
     transition: border-color 0.3s;
 }
 
 .register-form input:focus {
-    border-color: #007bff;
-}
-
-.register-form .confirmPassword {
-    border: 1px solid #ff9800;
-}
-
-.register-form button {
-    padding: 0.75rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.register-form button:hover {
-    background-color: #0056b3;
-}
-
-.login-link {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.login-link a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.login-link a:hover {
-    color: #0056b3;
+    border-color: #6a11cb;
 }
 
 .genre-selection {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    margin-top: 20px;
 }
 
 .genre-selection h2 {
     font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
     color: #333;
 }
 
 .genre-selection div {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 5px;
 }
 
-.genre-selection input[type="checkbox"] {
-    margin-right: 0.5rem;
-    cursor: pointer;
-}
-
-.genre-selection .genre-name {
+.genre-name {
+    margin-left: 10px;
     font-size: 1rem;
-    color: #555;
+    color: #333;
+}
+
+.register-form button {
+    background: #6a11cb;
+    color: #fff;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.register-form button:hover {
+    background: #2575fc;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.login-link a:hover {
+    color: #2575fc;
 }
