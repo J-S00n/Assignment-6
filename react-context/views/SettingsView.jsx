@@ -1,9 +1,6 @@
 import { useStoreContext } from "../context/user";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Map } from "immutable";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import "./SettingsView.css";
 
 function SettingsView() {
@@ -43,7 +40,6 @@ function SettingsView() {
 
     return (
         <div className="settings-container">
-            <Header />
             <h1 className="settings-title">Settings</h1>
             <form onSubmit={handleSettingChange} className="settings-form">
                 <label>
@@ -89,7 +85,6 @@ function SettingsView() {
                 </div>
                 <button type="submit">Save</button>
             </form>
-            <Footer />
         </div>
     );
 }

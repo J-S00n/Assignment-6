@@ -49,7 +49,8 @@ function SearchView() {
                                 alt={movie.title}
                             />
                             <button
-                                className="buy-button"
+                                className={cart.has(movie.id) ? "buy-button added" : "buy-button"}
+                                disabled={cart.has(movie.id)}
                                 onClick={() => {
                                     setCart((prev) => new Map(prev).set(movie.id, movie));
                                     alert(`${movie.title} has been added to your cart!`);

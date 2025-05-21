@@ -11,10 +11,13 @@
     transition: background-color 0.3s ease;
 }
 
-.buy-button:disabled {
-    background-color: #6c757d;
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+.buy-button.added {
+    background-color: grey;
     cursor: not-allowed;
-    color: #e2e2e2;
 }
 
 

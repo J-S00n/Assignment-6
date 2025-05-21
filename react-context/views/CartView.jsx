@@ -1,8 +1,22 @@
 import { useStoreContext } from "../context/user";
+import { useNavigate } from "react-router-dom";
 import "./CartView.css";
 
 function CartView() {
     const { cart, setCart } = useStoreContext();
+    const navigate = useNavigate();
+
+    if (cart.size === 0) {
+        return (
+            <div className="empty-cart">
+                <h1>Cart</h1>
+                <p>Your cart is empty.</p>
+                <button
+                    onClick={() => navigate("/movies")} className="cart-back-button">Back
+                </button>
+            </div>
+        );
+    }
 
     return (
         <div className="cart-container">
@@ -29,6 +43,9 @@ function CartView() {
                     </div>
                 );
             })}
+            <button
+                onClick={() => navigate("/movies")} className="cart-back-button">Back
+            </button>
         </div>
     );
 }
