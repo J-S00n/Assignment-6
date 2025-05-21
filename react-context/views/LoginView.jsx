@@ -23,30 +23,32 @@ function LoginView() {
     };
 
     return (
-        <div className="login-view">
-            <h1 className="login-title">Login</h1>
-            <form onSubmit={handleLogin} className="login-form">
-                <input
-                    type="email"
-                    value={formData.email}
-                    placeholder="Email"
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                />
-                <input
-                    type="password"
-                    value={formData.password}
-                    placeholder="Password"
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    required
-                />
-                <button type="submit" className="login-button">
-                    Login
-                </button>
-                <p className="register-link">
-                    Don't have an account? <Link to="/register">Register</Link>
-                </p>
-            </form>
+        <div className="login-container">
+            <div className="login-view">
+                <h1 className="login-title">Login</h1>
+                <form onSubmit={handleLogin} className="login-form">
+                    <input
+                        type="email"
+                        value={formData.email}
+                        placeholder="Email"
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                    />
+                    <input
+                        type="password"
+                        value={formData.password}
+                        placeholder="Password"
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        required
+                    />
+                    <button type="submit" className="login-button">
+                        Login
+                    </button>
+                    <p className="register-link">
+                        Don't have an account? <Link to="/register">Register</Link>
+                    </p>
+                </form>
+            </div>
         </div>
     );
 }

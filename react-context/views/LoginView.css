@@ -1,4 +1,12 @@
 
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f2f5; /* Light background color */
+}
+
 .login-view {
     display: flex;
     flex-direction: column;
