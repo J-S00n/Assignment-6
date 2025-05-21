@@ -35,7 +35,7 @@ function SettingsView() {
         setFirstName(formData.firstName);
         setLastName(formData.lastName);
         setChoices(sortedGenres);
-        navigate("/movies");
+        navigate("/movies/genre/28");
     }
 
     return (

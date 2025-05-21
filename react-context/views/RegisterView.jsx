@@ -48,7 +48,7 @@ function RegisterView() {
         setPassword(formData.password);
         setChoices(sortedGenres);
         setLoggedIn(true);
-        navigate("/movies");
+        navigate("/movies/genre/28");
     };
 
     return (

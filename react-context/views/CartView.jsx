@@ -12,7 +12,7 @@ function CartView() {
                 <h1>Cart</h1>
                 <p>Your cart is empty.</p>
                 <button
-                    onClick={() => navigate("/movies")} className="cart-back-button">Back
+                    onClick={() => navigate("/movies/genre/28")} className="cart-back-button">Back
                 </button>
             </div>
         );
@@ -44,7 +44,7 @@ function CartView() {
                 );
             })}
             <button
-                onClick={() => navigate("/movies")} className="cart-back-button">Back
+                onClick={() => navigate("/movies/genre/28")} className="cart-back-button">Back
             </button>
         </div>
     );
